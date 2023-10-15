@@ -1,0 +1,11 @@
+{
+  "printWidth": 100,
+  "overrides": [
+    {
+      "files": ["*.html", "legacy/**/*.js"],
+      "options": {
+        "printWidth": 150
+      }
+    }
+  ]
+}

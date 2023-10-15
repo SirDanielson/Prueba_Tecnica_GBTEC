@@ -1,0 +1,31 @@
+<div class="main-container">
+  <div *ngIf="savedPhotos.length > 0" class="photos-wrapper">
+    <div
+      *ngFor="let photo of savedPhotos"
+      class="photo"
+      [ngClass]="{ 'photo-selected': photo?.id === selectedPhoto?.id }"
+      (click)="selectPhoto(photo)"
+    >
+      <div class="img-container">
+        <div class="unsplash-icon with-text favorite-icon" (click)="savePhoto(photo); $event.stopPropagation()">
+          <span class="icon-text">{{ photo.likes }}</span>
+          <div class="icon">
+            <mat-icon *ngIf="!photo.saved" class="default-icon" matSuffix>favorite_border</mat-icon>
+            <mat-icon [ngClass]="{ saved: photo.saved }" class="hover-icon" matSuffix>favorite</mat-icon>
+          </div>
+        </div>
+        <img [src]="photo.urls?.regular" [alt]="photo.alt_description" />
+      </div>
+
+      <div class="photo-info-panel">
+        <span
+          >By: <span>{{ photo.user?.first_name }} {{ photo.user?.last_name }}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-photos" *ngIf="savedPhotos.length === 0">
+    <span>You haven´t liked any photos yet</span>
+  </div>
+</div>

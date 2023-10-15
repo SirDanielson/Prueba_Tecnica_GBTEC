@@ -1,0 +1,15 @@
+<div class="photo-card">
+  <mat-icon class="close-icon" (click)="closePanel()" matSuffix>close</mat-icon>
+  <div class="photo-wrapper">
+    <img class="detailed-photo" [src]="photo.urls?.regular" [alt]="photo.alt_description" />
+  </div>
+  <div class="photo-information">
+    <p *ngIf="photo.description" class="description">{{ photo.description }}</p>
+    <p>
+      Publishing Date: <span class="info-type">{{ publishingDate }}</span>
+    </p>
+    <p>
+      Created By: <span class="info-type">{{ photo.user?.first_name }} {{ photo.user?.last_name }} / @{{ photo.user?.instagram_username }}</span>
+    </p>
+  </div>
+</div>

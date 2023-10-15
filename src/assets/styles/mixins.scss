@@ -1,0 +1,5 @@
+@mixin screen-custom-size($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}

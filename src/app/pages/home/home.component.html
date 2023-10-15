@@ -1,0 +1,41 @@
+<div class="main-container">
+  <app-loader [loaderThickness]="10" [loaderSize]="100" *ngIf="photosList.length === 0 && loadingPhotos"></app-loader>
+
+  <div class="main-search-container">
+    <p class="main-title">Search</p>
+    <mat-form-field class="unsplash-input fill">
+      <input [(ngModel)]="searchValue" matInput placeholder="Search Photos" (keydown.enter)="searchPhotos(searchValue, true)" />
+      <mat-icon (click)="searchPhotos(searchValue, true)" class="search-icon" [ngClass]="{ disabled: !searchValue }" matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="photosList.length > 0" class="photos-wrapper">
+    <div
+      *ngFor="let photo of photosList"
+      class="photo"
+      [ngClass]="{ 'photo-selected': photo?.id === selectedPhoto?.id }"
+      (click)="selectPhoto(photo)"
+    >
+      <div class="img-container">
+        <div class="unsplash-icon with-text favorite-icon" (click)="savePhoto(photo); $event.stopPropagation()">
+          <span class="icon-text">{{ photo.likes }}</span>
+          <div class="icon">
+            <mat-icon *ngIf="!photo.saved" class="default-icon" matSuffix>favorite_border</mat-icon>
+            <mat-icon [ngClass]="{ saved: photo.saved }" class="hover-icon" matSuffix>favorite</mat-icon>
+          </div>
+        </div>
+        <img [src]="photo.urls?.regular" [alt]="photo.alt_description" />
+      </div>
+
+      <div class="photo-info-panel">
+        <span
+          >By: <span>{{ photo.user?.first_name }} {{ photo.user?.last_name }}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-photos" *ngIf="photosList.length === 0 && lastSearchValue && !loadingPhotos">
+    <span>NO PHOTOS FOUND</span>
+  </div>
+</div>

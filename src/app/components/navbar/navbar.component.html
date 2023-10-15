@@ -1,0 +1,28 @@
+<div [ngClass]="{ hidden: hideNavbar }" class="navbar">
+  <div class="navbar-element logo">
+    <img class="logo-img light-shadow" src="/assets/img/unsplash-logo.svg" alt="unsplash-logo" [routerLink]="['']" (click)="resetSearch()" />
+    <span class="logo-text">Unsplash-API</span>
+  </div>
+
+  <div class="navbar-element search">
+    <mat-form-field class="unsplash-input fill search-input" [ngClass]="{ 'hide-search': hideSearch }">
+      <input [(ngModel)]="searchValue" matInput placeholder="Search Photos" (keydown.enter)="search()" />
+      <mat-icon (click)="search()" class="search-icon navbar-search-input" [ngClass]="{ disabled: !searchValue }" matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div class="navbar-element actions">
+    <div class="unsplash-icon with-text" [routerLink]="['']">
+      <span class="icon-text">Search</span>
+      <div class="icon">
+        <mat-icon matSuffix>search</mat-icon>
+      </div>
+    </div>
+    <div class="unsplash-icon with-text" [routerLink]="['liked-photos']">
+      <span class="icon-text">Liked Photos</span>
+      <div class="icon">
+        <mat-icon matSuffix>favorite</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

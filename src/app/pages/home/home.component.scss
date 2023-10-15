@@ -1,0 +1,21 @@
+@import "src/assets/styles/animations.scss";
+
+.main-search-container {
+  max-width: 600px;
+  margin: 0 auto 16px;
+  transition: margin 200ms;
+  .main-title {
+    font-size: 32px;
+    text-align: center;
+    margin: 0 0 16px;
+    font-weight: lighter;
+    text-transform: uppercase;
+  }
+}
+
+.no-photos {
+  font-weight: lighter;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 260px;
+}
