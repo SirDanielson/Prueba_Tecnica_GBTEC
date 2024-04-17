@@ -29,6 +29,8 @@ export interface Photo {
   tags?: Tag[];
 }
 
+// Added some code
+
 export interface PhotoLinks {
   self?: string;
   html?: string;
