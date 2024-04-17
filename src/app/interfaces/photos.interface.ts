@@ -30,6 +30,7 @@ export interface Photo {
 }
 
 // Added some code
+// Added more code
 
 export interface PhotoLinks {
   self?: string;
